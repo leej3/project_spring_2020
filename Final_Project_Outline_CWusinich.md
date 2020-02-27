@@ -4,10 +4,10 @@ February 27, 2020
 
 # Outline for Final Project
 
-## **Objective of package:**
+## Objective of package:  
 I would like to design a series of scripts that will allow me to process behavioral and MEG data from a reward processing task, called the Monetary Incentive Delay (MID) task. I would use this package for the next year as we collect additional data on this task, and if the lab keeps using the task, hopefully the scripts I make can be helpful even after I leave the NIH.
 
-## **Background:** 
+## Background:  
 The MID task shows various shapes which allow participants to win money, avoid losing money, or do nothing (a neutral condition) if they press a button within a particular time window following the shape. After pressing the button, they receive feedback indicating whether they won money, avoided losing money, or had no reward in either direction. Our sample is still being collected but includes healthy controls, participants diagnosed with mood disorders on medication, and participants diagnosed with mood disorders off medication.
 
 The goal of my analysis is to report on deep source activity (i.e. striatum in this case) in the task’s MEG data using synthetic aperture magnetometry (SAM) for source localization. If we find activity as expected in the high gamma band during the feedback phase of the task, it will become a useful way to study reward processing in mood disorders and the impact of novel treatments using MEG.
@@ -16,12 +16,12 @@ Additionally, we plan to explore connectivity between regions related to reward 
 
 In terms of our analysis of behavior data, we need to gather mean reaction times and accuracy of button presses for analysis with an ANOVA (more details to come based on what factors will be involved).
 
-## **Files that need to be processed:**
+## Files that need to be processed:  
 -	Behavior data: a .txt output from the MID task that indicates button presses, timing of stimuli, etc.
 -	MEG data: a CTF (this is the MEG system we have at the NIH) file of MEG data from the task
 -	MRI data: structural MRIs for use with source localization (I already have a script for converting the files from the DICOM site to .nii files from my lab)
 
-# **Processing steps:**
+# Processing steps:  
 I am not sure that is the best way to do this, but this is what needs to happen to get the data from its raw state to stats that I can report. The bolded script names are the ones I would like to create for my package based off a naming convention I’ve seen in our fMRI processing pipeline, though they are still subject to change:
 
 ## Manual steps before scripts:
@@ -81,7 +81,7 @@ I am not sure that is the best way to do this, but this is what needs to happen 
 1.	I want a script that will set all of the permissions correctly for my group for all of the output files above because umask in my bash profile does not seem to work for this.
 2.	The commands in this script may just be put at the end of each of the above ones depending on how this works out, or should it just be a bash script?
 
-# **Additional Questions:**
+# Additional Questions:  
 -	Can I have a script do “module load afni” (and ctf, and R) so that I don’t have to?
 -	If the commands are from CTF, can they be in a python script? I had just been running them in the terminal, so would I have to add something special to the beginning of each one to include it in a python script?
 -	Can I make a giant script that will run all of these steps (01-05 and setting permissions) on a list of subjects?
