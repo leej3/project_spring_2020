@@ -1,3 +1,9 @@
+# This Append_Table_function's  purpose is to read an EEG file (in this case below the file: 'AusEC.edf' is used
+# and to extract from it overall amplitude data for (a) specific electrode(s) of interest (in this case Pz is the
+# 10-20 electrode location of interest) and to insert this information along with the timestamp of the recording
+# as a new row in the excel datafile 'Mood_Focus_Table' tabulating biometric data alongside subjective report of
+# mood and focus likert-scale ratings.
+
 import os.path as op
 import os
 import numpy as np
@@ -39,7 +45,7 @@ Pz_channel_data = raw.get_data(picks='EEG Pz-LE')
 #print(C3_channel_data.mean())
 #print(C4_channel_data.mean())
 print(Pz_channel_data.mean())
-#Pzdf = pd.DataFrame(data=Pz_channel_data)
+Pzdf = pd.DataFrame(data=Pz_channel_data)
 MeanPzdf = Pzdf.mean()
 
 
@@ -48,15 +54,14 @@ df = pd.read_excel('Mood_Focus_Table.xlsx')
 df.set_index(df['Date_Time'])
 
 #Creating a dataframe extracting amplitude and data from a particular sensor as well as date_time information from the EEG file
-Amplitude_df = pd.DataFrame({'Average_Total_Amplitude': [MeanPzdf.mean()],
+Amplitude_df = pd.DataFrame({'Average_Total_Amplitude': [MeanPzdf.mean()*100000000],
                             'Date_Time': [pd.to_datetime(raw.info['meas_date'][1])]})
 
 # Concatenating dataframes in order to join the existing data with the new data from a new EEG file
 sumdf = pd.concat([df, Amplitude_df], join="outer", sort=False, ignore_index=True)
 
-#printing the concatenated data-frames
+#printing the concatenated data-frames for viewing purposes
 print(sumdf)
-
 
 #exporting data to excel sheet
 writer=pd.ExcelWriter('Mood_Focus_Table.xlsx')
@@ -64,4 +69,7 @@ sumdf.to_excel(writer, 'Sheet1')
 
 writer.save()
 
+print("Please update Mood_Focus_Table.xlsx manually with subjective mood, subjective focus, and other columns before doing any anlysis, ensure that each column is filled in with its respective entries for the row you have just entered data into!")
+
 # ?? Getting 'extra index' columns, not sure how to get rid of these yet.
+

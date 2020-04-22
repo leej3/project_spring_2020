@@ -21,17 +21,17 @@ MFT = pd.read_excel('Mood_Focus_Table.xlsx')
 
 
 # Defining variables/columns for exploration of possible trends
-GSR = MFT['GSR_Values']
-Mood = MFT['Mood_self_rating']
-Focus = MFT['Focus_self_rating']
-Time = MFT['Date_Time']
-Avg_tot_amp = MFT['Average_Total_Amplitude']
-Alpha_amp = MFT['Alpha_Amplitude']
+GSR_Values = MFT['GSR_Values']
+Mood_self_rating = MFT['Mood_self_rating']
+Focus_self_rating = MFT['Focus_self_rating']
+Date_Time = MFT['Date_Time']
+Average_Total_Amplitude = MFT['Average_Total_Amplitude']
+Alpha_Amplitude = MFT['Alpha_Amplitude']
 
 
 #Creating Mood_Focus_Table customized (set by user) analysis of Pearson R and R^2
 
-print("Below are the columns/data from which you may choose two to perform a pearson correlation analysis and scatterplot on. Choose two columns to begin and watch your spe")
+print("Below are the columns/data from which you may choose two to perform a pearson correlation analysis and scatterplot on. Choose two columns to begin and watch your spelling!")
 print(MFT.columns)
 
 Chosen_X = globals()[input("Type in your first (or x-axis) variable: ")]
@@ -69,5 +69,5 @@ plt.title(str(X_var_name) + "vs" + str(Y_var_name))
 plt.show()
 
 # Show and clean up again
-#plt.clf()
+plt.clf()
 
