@@ -1,3 +1,13 @@
+# the purpose of the Pearson_and_scatterplt function is to allow one to do simple analysis of pearson correlation
+# as well as scatterplot between columns/variables of interest in the 'Mood_Focus_Table' which tabulates rows / instances
+# of recorded biometrics with a respective timestamp as well as subjective mood and focus ratings in a likert-scale manner.
+# This function allows to explore a relationship between the likert-scale ratings of mood or focus with particular biometrics
+# such as the overall alpha power at 'Pz' (10-20 site) which recent recent MIT studies have found to correlate with a state of focus
+# neurofeedback trials: http://news.mit.edu/2019/controlling-attention-brain-waves-1204
+# and also other sources, several of which I list on my website as they relate to neurofeedback for improving focus: Better State of Mind:
+# https://www.better-state-of-mind.com/neurofeedback-overview-and-research
+
+
 import os.path as op
 import os
 import numpy as np
