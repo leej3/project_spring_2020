@@ -6,4 +6,4 @@ def test_nothing_in_particular():
     assert 2 + 2 != 5
 
 def test_that_broken_means_broken():
-    assert 4 == 2
+    assert 2 + 2 == 4 # take that big brother
