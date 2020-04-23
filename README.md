@@ -1,5 +1,5 @@
 # Final Project
-## BIOF 309 Spring 2020
+BIOF 309 Spring 2020
 **Author:** Ramita Karra
 **Last edited:** 04-23-2020
 
@@ -8,9 +8,9 @@ This aim of this project is to produce a script that will process raw tab-delimi
 
 More information on ExpansionHunter can be found [here](https://academic.oup.com/bioinformatics/article/35/22/4754/5499079). 
 
-### Required Input
+## Required Input
 The raw data consists of a directory of all .txt files returned by ExpansionHunter-Targeted for multiple genes from a sample set.
-### Project Details:
+## Project Details:
 - Exploratory data analysis
 - Input data from separate text files and merge into a single master dataframe based on sample ID
 - Create dictionary for each gene, containing pathogenic repeat threshold values
