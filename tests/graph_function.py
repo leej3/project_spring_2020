@@ -1,3 +1,5 @@
+
+
 # This graph_function is one created to help in plotting / graphing elements of a EEG recording,
 # it contains an array of useful plot types with comments briefly summarizing the purpose or use of the plot. 
 # this function has an emphasis on graphing power/amplitude (in uV) and also frequency (in Hz) data, from specified
@@ -90,6 +92,7 @@ ica = mne.preprocessing.ICA(n_components=20, random_state=97, max_iter=800)
 ica.fit(raw)
 ica.exclude = [1, 2]  # details on how these channels are picked  are omitted here
 ica.plot_properties(raw, picks=ica.exclude)
+
 
 
 
