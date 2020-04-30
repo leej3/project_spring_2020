@@ -1,4 +1,7 @@
-import append_table
+from eeg_gsr_wellness_tracker import append_table
+import pandas
+import mne
+import numpy
 
 '''
 def extract_mean_amplitude_to_data():

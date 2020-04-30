@@ -1,5 +1,7 @@
-import graph
-
+from eeg_gsr_wellness_tracker import graph
+import pandas 
+import mne
+import numpy
 '''
 def extract_mean_amplitude_to_data():
    # assert append_table.extract_mean_amplitude_to_data(Picks = 'EEG Fp2-LE') type(sumdf) is pandas.core.frame.DataFrame
