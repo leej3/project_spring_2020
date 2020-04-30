@@ -1,7 +1,9 @@
+import pytest
 from eeg_gsr_wellness_tracker import append_table
 import pandas
 import mne
 import numpy
+
 
 '''
 def extract_mean_amplitude_to_data():
@@ -12,8 +14,17 @@ def extract_mean_amplitude_to_data():
 
 
 
+
+def read_raw_eeg_file(eeg_file_path):
+    assert isinstance(eeg_file_path,  str)
+    assert isinstance(raw,  RawEDF)
+    
+    
 def test_extract_mean_amplitude_to_data():
-    assert type(sumdf) is pandas.core.frame.DataFrame
-    assert type(raw) is mne.io.edf.edf.RawEDF
-    assert type("time") is numpy.int64
+    assert isinstance(Picks,  str)
+    #assert isinstance(sumdf, )
+    assert type("time") is str
+    #assert MeanPzdf = Pzdf.mean()
+    #assert picks==Picks
+
 
