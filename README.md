@@ -16,15 +16,15 @@ This project would use the MNE: EEG Analysis and Visualization software that wor
 
 1)	Preprocessing
 Parsing/Cleaning the file
--	Converting from raw data and “Annotations” formats to “events”
--	“Epoching” or parsing the data into a time-segments that are readable, appropriate for a given analysis to be done
+-	Converting from raw data and "Annotations" formats to "events"
+-	"Epoching" or parsing the data into a time-segments that are readable, appropriate for a given analysis to be done
 -	Artifact (noise in the signal) identification and suppressing
 o	 Marking bad channels
-o	Independent component analysis technique to identify and also to eliminate the “artifacts” (noise in the signal)
+o	Independent component analysis technique to identify and also to eliminate the "artifacts" (noise in the signal)
 
 2)	Visualization and Analysis 
 -	Much of the analysis will be concerned with analyzing amplitude statistics for electrodes separately or in conjunction, comparing this for different wavebands and sensor locations. 
--	Changing montages for EEG recordings (“montages” refer to different means of interpreting the recorded data from sensors via different calculations)
+-	Changing montages for EEG recordings ("montages" refer to different means of interpreting the recorded data from sensors via different calculations)
 -	Filtering the data through high, low, and notch filters to allow for different views.
 -	As I become more familiar with accessing the possibilities of the MNE-Python software I hope to expand this section on that basis. 
 
