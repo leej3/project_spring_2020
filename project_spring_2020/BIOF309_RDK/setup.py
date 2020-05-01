@@ -1,4 +1,6 @@
 
+# Metadata and installation details for the EHT_RDK package
+
 import setuptools
 
 with open("README.md", "r") as fh:
