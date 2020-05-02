@@ -1,10 +1,17 @@
 # Single Cell Random Drawing
 
-This small python package will enable for users to randomly draw the indicated number of cells from individual cluster of scRNAseq data and average the gene expression value of the chosen cells.
+This python package will enable for users to reduce the size of input scRNAseq matrix by random selection of a given number of samples within pre-defined clusters and averaging the gene expression value of the chosen cells.
 
 # Input
   1. Expression matrix of scRNAseq (gene by cells)
   2. Metadata (cell ids and cluster or cell type info)
+  3. For visualization, pre-calculated tSNE or UMAP coordinates can be tossed along with meatadata
+
+# Returns
+  1. shrunken matrix
+  2. shrunken metadata
+  3. cell.ids of randomly selected cells
+  4. tSNE plot, if the coordinates were given.
 
 # The benefit of downsizing cells with averaging the exprssion levels of gene?
   1. downsizing itself reduce the calculation burden --> reducing calculation time
