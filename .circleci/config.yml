@@ -9,5 +9,5 @@ jobs:
           - checkout
           - run:
               command: |
-                pip install .
-                pytest  --showlocals tests
+                pip install ./bk_packages
+                pytest  --showlocals bk_packages/tests
