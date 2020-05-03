@@ -9,6 +9,9 @@ from pandas import ExcelWriter
 from pandas import ExcelFile
 from pydoc import help
 from scipy.stats.stats import pearsonr
+from openpyxl import load_workbook
+workbook = load_workbook(filename="Mood_Focus_Table.xlsx")
+workbook.sheetnames
 
 
 def read_raw_eeg_file(eeg_file_path):
@@ -29,7 +32,7 @@ def read_raw_eeg_file(eeg_file_path):
 
 
 # Getting average amplitude (in uV) data from a specific sensor into a file and printing it:
-def extract_mean_amplitude_to_data(Picks):
+def extract_mean_amplitude_to_data(Picks, excel_file= 'Mood_Focus_Table.xlsx'):
     '''
     This extract_mean_amplitude_to_data function's  purpose is to read an EEG file (using the read_raw_eeg_file such as:
     'AusEC.edf' is used and to extract from it overall amplitude data for (a) specific electrode(s) of interest (in this
@@ -41,7 +44,7 @@ def extract_mean_amplitude_to_data(Picks):
     read_raw_eeg_file('/Users/barlehmann/desktop/AusEC.edf')
     extract_mean_amplitude_to_data(Picks = 'EEG Fp2-LE')
     Of course, the read_raw_eeg_file must specify a particular file to be extracting the mean amplitude from, which is why
-    this function is being used before the extraction function.
+    this function is being used before the extraction function. Note that the amplitudes input into the excel sheet are sometimes rounded to the nearest whole number and sometimes not. This inconsistency will be addressed in a later version. 
     '''
     pass
     data = raw.get_data()
@@ -51,8 +54,6 @@ def extract_mean_amplitude_to_data(Picks):
     F3_channel_data = raw.get_data(picks='EEG F3-LE')
     C3_channel_data = raw.get_data(picks='EEG C3-LE')
     '''
-    print(extract_mean_amplitude_to_data.__doc__)
-    Picks_channel_data = raw.get_data(picks=Picks)
     np.save(file='my_data.npy', arr=data)
     sampling_freq = raw.info['sfreq']
     start_end_secs = np.array([0, 99999])
@@ -68,7 +69,7 @@ def extract_mean_amplitude_to_data(Picks):
     MeanPzdf = Pzdf.mean()
 
     # creating data frame from excel sheet with present data in order to append this data, and setting index
-    df = pd.read_excel('Mood_Focus_Table.xlsx')
+    df = pd.read_excel(excel_file)
     df.set_index(df['Date_Time'])
 
     # Creating a dataframe extracting amplitude and data from a particular sensor as well as date_time information from the EEG file
@@ -91,4 +92,3 @@ def extract_mean_amplitude_to_data(Picks):
 
 # print(extract_mean_amplitude_to_data.__doc__)
 # print(read_raw_eeg_file.__doc__)
-
