@@ -16,9 +16,9 @@ def read_raw_eeg_file(eeg_file_path):
     '''
     getting MNE to read the data file 'AusEC.edf', be sure to put the eeg_file_path in single quotes and also having it as
     an absolute path:
-    i.e. '/Users/barlehmann/desktop/JiEC.edf'
+    i.e. 'JiEC.edf'
     This is an example of a way to use the read_raw_eeg_file function:
-    read_raw_eeg_file('/Users/barlehmann/desktop/AusEC.edf')
+    read_raw_eeg_file('AusEC.edf')
     raw.plot_psd(fmax=40)
     print(raw.info)
     '''
@@ -40,7 +40,7 @@ def pearson_r_comparison():
     focus neurofeedback trials: http://news.mit.edu/2019/controlling-attention-brain-waves-1204
     This function does not take any arguments.
     sample function:
-    read_raw_eeg_file('/Users/barlehmann/desktop/AusEC.edf')
+    read_raw_eeg_file('AusEC.edf')
     pearson_r_comparison()
 
     '''
@@ -86,7 +86,7 @@ def scatterplot_variable_comparison():
    This function creates a scatterplot for two variables of the user's choice, from the Mood_Focus_Table of data.
    The function takes no arguments
     sample function:
-    read_raw_eeg_file('/Users/barlehmann/desktop/AusEC.edf')
+    read_raw_eeg_file('AusEC.edf')
     scatterplot_variable_comparison()
    '''
     pass

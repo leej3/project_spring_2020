@@ -21,9 +21,9 @@ from scipy.stats.stats import pearsonr
 def read_raw_eeg_file(eeg_file_path):
     '''
     getting MNE to read the data file 'AusEC.edf', be sure to put the eeg_file_path in single quotes and also having it as an absolute path
-    i.e. '/Users/barlehmann/desktop/JiEC.edf'
+    i.e. 'JiEC.edf'
     This is an example of a way to use the read_raw_eeg_file function is as a comment:
-    read_raw_eeg_file('/Users/barlehmann/desktop/AusEC.edf')
+    read_raw_eeg_file('AusEC.edf')
     raw.plot_psd(fmax=40)
     print(raw.info)
     '''

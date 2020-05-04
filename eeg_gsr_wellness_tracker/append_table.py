@@ -17,9 +17,9 @@ workbook.sheetnames
 def read_raw_eeg_file(eeg_file_path):
     '''
     getting MNE to read the data file 'AusEC.edf', be sure to put the eeg_file_path in single quotes and also having it as an absolute path
-    i.e. '/Users/barlehmann/desktop/JiEC.edf'
+    i.e. 'JiEC.edf'
     This is an example of a way to use the read_raw_eeg_file function:
-    read_raw_eeg_file('/Users/barlehmann/desktop/AusEC.edf')
+    read_raw_eeg_file('AusEC.edf')
     raw.plot_psd(fmax=40)
     print(raw.info)
     '''
@@ -41,7 +41,7 @@ def extract_mean_amplitude_to_data(Picks, excel_file= 'Mood_Focus_Table.xlsx'):
     of mood and focus likert-scale ratings.
     The extract_mean_amplitude_to_data takes the argument Picks which specifies the specific electrode(s) being looked at
     An example of using this function might look like:
-    read_raw_eeg_file('/Users/barlehmann/desktop/AusEC.edf')
+    read_raw_eeg_file('AusEC.edf')
     extract_mean_amplitude_to_data(Picks = 'EEG Fp2-LE')
     Of course, the read_raw_eeg_file must specify a particular file to be extracting the mean amplitude from, which is why
     this function is being used before the extraction function. Note that the amplitudes input into the excel sheet are sometimes rounded to the nearest whole number and sometimes not. This inconsistency will be addressed in a later version. 
