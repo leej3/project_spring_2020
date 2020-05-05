@@ -20,6 +20,7 @@ Marker1='cue'
 marker1window='0 4'
 freqname,freqband=gamma
 
+#you probably don't need to touch these ones:
 OrientBand=freqband
 NoiseBand=freqband
 CovBand=freqband

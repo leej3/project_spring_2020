@@ -1,3 +1,4 @@
+#under construction; do not judge this one yet!
 #written for python 3.7; run from scripts folder (/data/MoodGroup/07M0021_meg_analysis/MID_data/scripts)
 
 #output of this script includes marker files (for marker placement in MEG file processing) and behavioral data results (adds them to master spreadsheet
