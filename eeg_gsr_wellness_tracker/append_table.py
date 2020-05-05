@@ -10,29 +10,22 @@ from pandas import ExcelFile
 from pydoc import help
 from scipy.stats.stats import pearsonr
 from openpyxl import load_workbook
-workbook = load_workbook(filename="Mood_Focus_Table.xlsx")
-workbook.sheetnames
 
 
 def read_raw_eeg_file(eeg_file_path):
     '''
-    getting MNE to read the data file 'AusEC.edf', be sure to put the eeg_file_path in single quotes and also having it as an absolute path
-    i.e. 'JiEC.edf'
     This is an example of a way to use the read_raw_eeg_file function:
-    read_raw_eeg_file('AusEC.edf')
+    raw = read_raw_eeg_file('AusEC.edf')
     raw.plot_psd(fmax=40)
     print(raw.info)
     '''
-    pass
-    mne.io.read_raw_edf(eeg_file_path, montage='deprecated', eog=None, misc=None, stim_channel='auto', exclude=(),
-                        preload=False, verbose=None)
-    global raw
     raw = mne.io.read_raw_edf(eeg_file_path)
+    return raw
 
 
 
 # Getting average amplitude (in uV) data from a specific sensor into a file and printing it:
-def extract_mean_amplitude_to_data(Picks, excel_file= 'Mood_Focus_Table.xlsx'):
+def extract_mean_amplitude_to_data(Picks, excel_file):
     '''
     This extract_mean_amplitude_to_data function's  purpose is to read an EEG file (using the read_raw_eeg_file such as:
     'AusEC.edf' is used and to extract from it overall amplitude data for (a) specific electrode(s) of interest (in this
@@ -46,7 +39,6 @@ def extract_mean_amplitude_to_data(Picks, excel_file= 'Mood_Focus_Table.xlsx'):
     Of course, the read_raw_eeg_file must specify a particular file to be extracting the mean amplitude from, which is why
     this function is being used before the extraction function. Note that the amplitudes input into the excel sheet are sometimes rounded to the nearest whole number and sometimes not. This inconsistency will be addressed in a later version. 
     '''
-    pass
     data = raw.get_data()
     Picks_channel_data = raw.get_data(picks=Picks)
     '''
