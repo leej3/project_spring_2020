@@ -6,45 +6,22 @@ import mne
 import numpy
 from pathlib import Path
 from openpyxl import load_workbook
-workbook = load_workbook(filename='Mood_Focus_Table.xlsx')
-workbook.sheetnames
+
+WORKBOOK_PATH = Path(__file__).parent / 'data' / 'Mood_Focus_Table.xlsx'
+RAWDATA_PATH = WORKBOOK_PATH.with_name('AusEC.edf')
 
 
-'''
-def extract_mean_amplitude_to_data():
-   # assert append_table.extract_mean_amplitude_to_data(Picks = 'EEG Fp2-LE') type(sumdf) is pandas.core.frame.DataFrame
-    assert append_table.extract_mean_amplitude_to_data(Picks = 'EEG Fp2-LE') type(raw) is mne.io.edf.edf.RawEDF
-    assert append_table.extract_mean_amplitude_to_data(Picks = 'EEG Fp2-LE') type("time") is numpy.int64
-'''
-
-
-
-#def read_raw_eeg_file(eeg_file_path):
-#    assert isinstance(eeg_file_path,  str)
-#    assert isinstance(raw,  RawEDF)
-    # you should add some small data in the tests directory for this.
-    #filename = ‘some_data.edf’
-    
-    
 def test_read_raw_eeg_file():
-    file = 'AusEC.edf'
-    filename = 'AusEC.edf'
     first_3_values = [-1.21509270e-05, -1.13508659e-05, -1.09508354e-05]
-    #first_value = ['4.62613']
-    data = mne.io.read_raw_edf(file)
+    
+    # Read some sample data
+    data = append_table.read_raw_eeg_file(RAWDATA_PATH)
     raw_data = data.get_data()
-    assert first_3_values == raw_data
-     # you should add some small data in the tests directory for this.
-   # filename = ‘some_data.edf’
-   # first_ten_values = [1,2,3,2,2,0,0,0,-10,20]
-   # result = append_table.read_raw_eeg_file(filename)
-   # assert first_ten_values == result[:10]
-    
-    
-    
-    
-    
-    
+
+    # check that the first 3 values of the first row are as expected
+    assert numpy.allclose(first_3_values, raw_data[0,:3])
+    assert RAWDATA_PATH.exists()
+   
     
     
 @pytest.mark.parametrize("Picks", ["EEG F3-LE"])
