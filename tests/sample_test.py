@@ -1,9 +1,10 @@
-def test_nothing_in_particular():
-    from pathlib import Path
-    current_dir = Path.cwd()
-    print('hello world!')
+import pandas as pd
+from get_volumes import core_functions
 
-    assert 2 + 2 != 5
 
-def test_that_broken_means_broken():
-    assert 4 == 2
+def test_get_volumes():
+    expected = pd.DataFrame({"SampleConcentrions":[1,4,2],'volumes':[20,1,2]})
+    filename = 'data/data.csv'
+    input = pd.DataFrame.read_csv(filename).head(3)
+    result = core_functions.get_volumes(input)
+    assert result == expected
