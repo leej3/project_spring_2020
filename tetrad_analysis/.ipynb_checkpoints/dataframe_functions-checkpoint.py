@@ -5,7 +5,6 @@ from pandas import ExcelWriter
 from pandas import ExcelFile
 
 
-#define excel document for code
  
 def read_excel_file(filepath): 
     
