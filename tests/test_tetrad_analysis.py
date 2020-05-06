@@ -1,29 +1,30 @@
 import pytest
-from tests import COPY_tetrad_analysis_complete_program
-import pandas
-import numpy
+from tetrad_analysis import dataframe_functions
+import pandas as pd
+import numpy as np
+from pathlib import Path
+    
+SAMPLE_XLSX = Path(__file__) / "data" / "python_test_list.xlsx"
+SAMPLE_DF_TAIL = pd.DataFrame(
+        data={
+            "Plate": [1,1,1],
+            "Tetrad":[12,12,12],
+            "spore":["12B","12C","12D"],
+            "viability":[1,1,1],
+            "NAT": [0,1,0],
+            "HYG": [0,1,0],
+            "URA": [0,1,0],
+            }
+    )
+
+
+
+def test_read_excel_file():
+
+    expected_tail = SAMPLE_DF_TAIL.set_index("Plate")
     
 
-def test_NAT_df_index_sort_values():
-    #assert column = ['NAT']
-    assert ascending == False
-    assert df_index[df_index['NAT'] > 0] == 1
-    
-#makes sure that you are getting the positive clones and not the negative ones (ones with 0)    
-                    
 
-def test_HYG_df_index_sort_values():
-    #assert column = ['HYG']
-    assert ascending == False
-    assert df_index[df_index['HYG'] > 0] == 1
- 
-#makes sure that you are getting the positive clones and not the negative ones (ones with 0)                
-                    
-                    
-def test_URA_df_index_sort_values():
-    #assert column = ['URA']
-    assert ascending == False
-    assert df_index[df_index['URA'] > 0] == 1
-                    
-                    
-#makes sure that you are getting the positive clones and not the negative ones (ones with 0)  
+    result = dataframe_functions.read_excel_file(SAMPLE_XLSX)
+    
+    assert result.tail(3) == expected_tail
