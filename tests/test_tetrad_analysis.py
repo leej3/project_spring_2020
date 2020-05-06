@@ -1,5 +1,5 @@
 import pytest
-from tests import COPY_tetrad_analysis_complete_program
+from tetrad_analysis import dataframe_functions.py
 import pandas
 import numpy
     
