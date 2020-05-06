@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import ast
 from pandas import ExcelWriter
 from pandas import ExcelFile
 
@@ -20,15 +19,15 @@ def read_excel_file(filepath):
 
 
 def sort_and_filter_by_col(df_in,col):
-    '''This will sort by the input argument col and filter for positive values'''
+    '''This will sort by the input argument col (in this case antibiotics) and filter for positive values'''
    
     
-    #separate the positive spores from the negative spores
+    #separate the positive values from the negative values
     df_sorted = df_in.sort_values([col], ascending = False)
     pos_vals = df_sorted[df_sorted[col] > 0]
 
         
-    #now take the positive ones and put them into their own excel document
+    #now take the positive values and put them into their own excel document
     df_filtered = pd.DataFrame(pos_vals)
     return df_filtered
         
@@ -57,6 +56,8 @@ def combine_antibiotics(df_in,markers):
 
 
 
+
+
 def write_marker_dict_to_disk(marker,file_out):
     """
      Given a dict of dataframes, writes out an excel file in which each 
@@ -71,19 +72,18 @@ def write_marker_dict_to_disk(marker,file_out):
 
     writer.save()
     
-    
-    
-    
-    
+   
+
     
 def antibiotic_analysis(file_in,file_out="Antibiotic_markers.xlsx",markers=['NAT','HYG','URA']):
      """
      Reads file_in, and for each marker performs a sort and filter before 
      writing the results to file_out. Each marker occupies its own sheet
      """
-     df_tetrad = read_excel_file(file_in)
-     output_dict = combine_antibiotics(df_tetrad,markers)
-     write_marker_dict_to_disk(output_dict,file_out)
+     
+    df_tetrad = read_excel_file(file_in)
+    output_dict = combine_antibiotics(df_tetrad,markers)
+    write_marker_dict_to_disk(output_dict,file_out)
 
    
 
