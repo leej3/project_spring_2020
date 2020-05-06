@@ -5,12 +5,10 @@ from pandas import ExcelWriter
 from pandas import ExcelFile
 
 
-#define excel document for code
+'''Define a new dataframe (df) as being the excel document of choice with tetrad data'''
         
 #reading the excel file that includes all of the tetrad data
 df = pd.read_excel('python_test_list.xlsx')
-    
-    
     
 #delete the automatically generated column on the left-hand side
 df_index = df.set_index('Plate')
@@ -34,7 +32,7 @@ def sort_NAT():
 
 
         
-#**run this new command to see if it works---if not then a new excel document won't be created and saved on your computer**
+#**run this new command to see if it works---if not then a new excel document with the name "NAT_positive" won't be created and saved on your computer**
 sort_NAT()
         
         
@@ -55,7 +53,7 @@ def sort_HYG():
        
         
         
-#**run this new command to see if it works---if not then a new excel document won't be created and saved on your computer**
+#**run this new command to see if it works---if not then a new excel document named "HYG positive" won't be created and saved on your computer**
 sort_HYG()
         
         
@@ -74,7 +72,7 @@ def sort_URA():
     dfNAT.to_excel("URA_positive_python_fp.xlsx")
 
        
-#**run this new command to see if it works---if not then a new excel document won't be created and saved on your computer**
+#**run this new command to see if it works---if not then a new excel document named "URA positive" won't be created and saved on your computer**
 sort_URA()
    
     
@@ -105,7 +103,7 @@ def combine_antibiotics():
     
     
     
-#**run this new command to see if it works---if not then a new excel document won't be created and saved on your computer**
+#**run this new command to see if it works---if not then a new excel document named "Antibiotic_markers" won't be created and saved on your computer**
 combine_antibiotics()
     
 
