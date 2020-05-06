@@ -4,7 +4,7 @@ with open('README.md','r') as yeet:
 	long_description=yeet.read()
 
 setup(
-        name = 'MID_processing',
+        name = 'MID_proc',
         author = 'Christina Wusinich',
 	author_email='christinawusinich@gmail.com',
         description = 'Some tools for processing MID behavioral and MEG data',
