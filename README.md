@@ -2,4 +2,17 @@
 
 [![CircleCI](https://circleci.com/gh/biof309/project_spring_2020/tree/master.svg?style=shield)](https://circleci.com/gh/biof309/project_spring_2020/tree/master)
 
-For my final project, I plan to create a script that will find overlapping copy number variants (CNV) across multiple individuals’ genomes. The script will scan large comma delineated files to compare chromosome number (the chromosome on which the CNV is located), CNV start position, CNV stop location, and CNV type (deletion vs duplication). The script must also accept a value for the minimum length for regions of interest (i.e. 1 kb) and a value defining the minimum length of an overlap (i.e. a CNV found in two separate genomes having a start and stop position within 25 basepairs of the other). It then will create an output file containing the chromosome number, start position, stop position, and CNV type of each shared CNV.
+Common CNV Finder is a Python tool that finds copy number variants (CNVs) shared by two individuals. It accepts CSV files containing CNVs detected in individual genomes, with columns ['Chrom', 'Start', 'Stop', 'Type', 'P_Value'].
+
+Common CNV Finder removes CNVs based on specific parameters, such as:
+    1. User-defined minimum CNV length
+    2. User-defined P-value threshold
+    3. Inaccurate CNV calls located on 'chrM'
+    
+And generates an output file containing the CNVs common to both samples based on additional criteria:
+     1. CNV located on same chromosome
+     2. CNV is of same type (Deletion or Duplication)
+     3. CNV start sites are within a user-defined distance of each other (i.e. 25 bp)
+     4. CNV stop sites are within a user-defined distance of each other
+     
+ The output file has the same format as the input and can be exported as a CSV to a specified path.
