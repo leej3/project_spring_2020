@@ -14,6 +14,13 @@ df = pd.read_excel('python_test_list.xlsx')
 df_index = df.set_index('Plate')
 
 
+'''potential error may arise:if the variable df is not established before running the code below, then you will get no outcome'''
+
+
+
+
+
+
 
 def sort_NAT():
     '''This will allow for you to select for spores in tetrads that test positive for NAT and place them in their own excel document'''
