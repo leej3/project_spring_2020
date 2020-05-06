@@ -15,3 +15,23 @@ Other methods, such as SuSiE, DAPG and FINEMAP implement a model wherein 'credib
 Code will be written which takes a list of paths to standardised peak files produced from genome wide chip-seq and accessible chromatin assays which will then be intersected with the location of the SNPs in question. From this, a matrix will be outputted with a 0 assigned to SNPs which do not co-localise to epigentic peak, and a 1 to those which do. 
 
 From this, it will become apparent which SNPs are functionally enriched and will then be priorised for functional followup.
+
+In the code directory, we have all that is needed to output our matrix. 
+
+Running the following command should produce an example matrix;
+
+python annotation.plot.py locus_file, ann_paths_file, output, xlab)
+
+  where;
+    locus_file contains the SNPs that we are looking at in a space delimited text file, headers should
+    be 'Chr', 'pos' and 'RSID'. 
+    
+    ann_paths_file contains directories to epigenetic bed files, in this case we are looking at ATAC
+    seq peaks (open chromatin) and super-enhancer peaks (high H3K27ac). SNPs which fall in both are 
+    quite likely to be functionally implicated. 
+    
+    output is a string to define the output files
+    
+    xlab is a string to plot some details on the final plot, in this case 'Chr5p15.33 Credible SNPs'
+    will suffice. 
+    
