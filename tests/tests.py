@@ -9,3 +9,7 @@ xlab = 'test_xlab'
 def test_read_of_locus_file():
     header = main(locus_file, ann_paths_file, output, xlab)
     assert header[0] == 'Chr'
+    
+def test_read_of_ann_paths_file():
+    ann = main(locus_file, ann_paths_file, output, xlab)
+    assert ann[0] == 'Chr'
