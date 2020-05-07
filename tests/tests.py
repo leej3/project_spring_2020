@@ -8,4 +8,4 @@ xlab = 'test_xlab'
 
 def test_read_of_locus_file():
     header = main(locus_file, ann_paths_file, output, xlab)
-    assert isinstance(header, list)
+    assert header[0] == 'Chr'
