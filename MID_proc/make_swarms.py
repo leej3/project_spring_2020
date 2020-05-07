@@ -1,5 +1,5 @@
 #CW 5.6.2020
-#written for python 3.7 but works in older versions
+#written for python 3.7
 #makes swarm file in swarm folder for copying OG MID dataset into a new dataset; also makes SAM command swarm files (sam_cov, sam_wts, and sam_3d)
 #if you run this twice on the same date, it will overwrite the old files (on purpose!)
 
@@ -107,5 +107,5 @@ def make_swarm_sam(subjectlist=default_sublist, ds=default_ds, marker=default_ma
 
 
 if __name__=='__main__':
-	make_swarm_newDs()	
+	make_swarm_newDs()
 	make_swarm_sam()

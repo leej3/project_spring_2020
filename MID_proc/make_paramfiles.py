@@ -1,31 +1,26 @@
-#CW 4.19.2020
-#written for python 3.7 but works in older versions
-#makes highgamma.param files and puts them in each subject's meg folder; this can be run from anywhere
-#make sure to set param variables you want!
+#CW 5.6.2020
+#written for python 3.7
+#makes .param files and puts them in each subject's meg folder
+#make sure to set param variables you want in here or when running the function!
 
-import os
+import os,sys
 
 #set directory, subject list, and some other things
 rootdir='/data/MoodGroup/07M0021_meg_analysis/MID_data/subjects/'
-root, dirs, files = os.walk(rootdir).next()
-subj_list=list(dirs)
+root, dirs, files = os.walk(rootdir).__next__()
+default_sublist=list(dirs)
 alpha=['alpha','8 14']
 beta=['beta','15 29']
 gamma=['gamma','30 60']
 highgamma=['highgamma','62 118']
 
-#set variables here:
-NumMarkers='1'
-Marker1='cue'
-marker1window='0 4'
-freqname,freqband=gamma
+#set default variables here:
+default_NumMarkers='1'
+default_Marker1='respwin'
+default_marker1window='0.5 2'
+default_freq=highgamma
 
-#you probably don't need to touch these ones:
-OrientBand=freqband
-NoiseBand=freqband
-CovBand=freqband
-ImageBand=freqband
-DataSegment=marker1window
+#setting more variables
 XBounds='-10 10'
 YBounds='-9 9'
 ZBounds='0 15'
@@ -35,11 +30,26 @@ Model='Nolte'
 CovType='SUM'
 ImageFormat='TLRC 5'
 
-#makes param files for each subject in their meg folder
-paramfile_name=freqname+'_'+Marker1+'.param'
-for sub in subj_list:
-	new_paramfile=open(rootdir + sub + '/meg/' + paramfile_name,'w+')	
-	new_paramfile.write('NumMarkers '+NumMarkers+'\n' +'Marker1 '+Marker1+' '+marker1window+' TRUE'+'\n'+ 'OrientBand '+OrientBand+'\n'+ 'NoiseBand '+NoiseBand+'\n'+ 'CovBand '+CovBand+'\n'+ 'ImageBand '+ImageBand+'\n'+ 'DataSegment '+DataSegment+'\n'+ 'XBounds '+XBounds+'\n'+ 'YBounds '+YBounds+'\n'+ 'ZBounds '+ZBounds+'\n'+ 'ImageStep '+ImageStep+'\n'+ 'ImageMetric '+ImageMetric+'\n'+ 'PrefixLength '+str(len(sub))+'\n'+ 'MRIDirectory '+rootdir+sub+'/mri\n'+ 'Model '+Model+'\n'+ 'CovType '+CovType+'\n'+ 'ImageFormat '+ImageFormat)
-	new_paramfile.close()
+def make_param(sublist=default_sublist, freq=default_freq, NumMarkers=default_NumMarkers, Marker1=default_Marker1, marker1window=default_marker1window):
+	"""Makes param files for each subject in their meg folder."""
+	#define some things
+	freqname,freqband=freq
+	OrientBand=freqband
+	NoiseBand=freqband
+	CovBand=freqband
+	ImageBand=freqband
+	DataSegment=marker1window
 
-print("Param files have been added!")
+	#bestow an appropriate name upon the new param file	
+	paramfile_name=f'{freqname}_{Marker1}.param'
+	
+	#make param file for each subject and drop it in their meg folder
+	for sub in sublist:
+		new_paramfile=open(f'{rootdir}{sub}/meg/{paramfile_name}','w+')	
+		new_paramfile.write(f"""NumMarkers {NumMarkers}\nMarker1 {Marker1} {marker1window} TRUE\nOrientBand {OrientBand}\nNoiseBand {NoiseBand}\nCovBand {CovBand}\nImageBand {ImageBand}\nDataSegment {DataSegment}\nXBounds {XBounds}\nYBounds {YBounds}\nZBounds {ZBounds}\nImageStep {ImageStep}\nImageMetric {ImageMetric}\nPrefixLength {str(len(sub))}\nMRIDirectory {rootdir}{sub}/mri\nModel {Model}\nCovType {CovType}\nImageFormat {ImageFormat}""")
+		new_paramfile.close()
+
+	print("Param files have been added!")
+
+if __name__=='__main__':
+	make_param()
