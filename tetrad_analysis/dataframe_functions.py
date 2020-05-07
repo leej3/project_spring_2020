@@ -8,26 +8,29 @@ from pandas import ExcelFile
 def read_excel_file(filepath): 
     
     '''
-    Reading the excel file and returns a dataframe
+    Reading the excel file containing tetrad data and returning it as a dataframe
     '''
     df = pd.read_excel(filepath)
     df_index = df.set_index('Plate')
     return df_index
+   
+   #make sure that the format for the filepath is (r'FILEPATH') because without the "r" there will be an error
+   #the df_index portion is to clean up the data by removing the automatic column of numbers that pd.read_excel(filepath) adds 
 
 
 
 
 
 def sort_and_filter_by_col(df_in,col):
-    '''This will sort by the input argument col (in this case antibiotics) and filter for positive values'''
+    '''This will sort by the input argument col (in this case a specific antibiotic) and filter for positive values'''
    
     
-    #separate the positive values from the negative values
+    #separate the positive values (1) from the negative values (0) for a specific marker
     df_sorted = df_in.sort_values([col], ascending = False)
     pos_vals = df_sorted[df_sorted[col] > 0]
 
         
-    #now take the positive values and put them into their own excel document
+    #this filters out the negatives (0) and creates a new dataframe containing only the positives (1) for a specific marker
     df_filtered = pd.DataFrame(pos_vals)
     return df_filtered
         
@@ -40,13 +43,13 @@ def sort_and_filter_by_col(df_in,col):
 def combine_antibiotics(df_in,markers):
    
     '''
-    This will read an excel file, and for each marker provided will sort and
+    This will read an excel file containing tetrad data, and for each marker provided will sort and
      filter for positive values. Returns a dictionary where each value is a 
      dataframe for a marker
      '''
 
-    
-    #create one dataframe containing all of the positive markers
+    #this differs from the sort_and_filter_by_col() function because it combines all of the dataframes (each containing the   positives for a specific marker) and turning it into one large dictionary
+ 
     all_positive = {}
     for marker in markers:
         df_marker = sort_and_filter_by_col(marker)
@@ -72,7 +75,7 @@ def write_marker_dict_to_disk(marker,file_out):
 
     writer.save()
     
-   
+   #in order to check if the function above worked check to see if the file_out is created and available on your computer
 
     
 def antibiotic_analysis(file_in,file_out="Antibiotic_markers.xlsx",markers=['NAT','HYG','URA']):
