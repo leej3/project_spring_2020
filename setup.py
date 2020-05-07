@@ -12,7 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/aob93/project_spring_2020",
-    scripts = ['annotation_plot.py'],
+    scripts = ['project_code/annotation_plot.py'],
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
