@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 
- SAMPLE_XLSX = Path(__file__) / "data" / "python_test_list.xlsx"
+SAMPLE_XLSX = Path(__file__) / "data" / "python_test_list.xlsx"
   SAMPLE_DF_TAIL = pd.DataFrame(
          data={
              "Plate": [1,1,1],
