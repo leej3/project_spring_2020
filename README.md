@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/biof309/project_spring_2020/tree/master.svg?style=shield)](https://circleci.com/gh/biof309/project_spring_2020/tree/master)
 
-## MID MEG Processing!
+## MID_proc
 A very amateur python package by Christina Wusinich
 
 Last updated: 04/06/2020
@@ -31,34 +31,27 @@ In terms of our analysis of behavior data, we need to gather mean reaction times
 
 # Processing steps (that this package helps with):  
 
-##	Behavior processing (still under construction; need to make jupyter notebook copied file into py script)
-1.	**MID_behprocess.py** (doesn't exist yet)
--	Makes marker files for more MEG processing; these markers will designate win/loss/neutral cues to be marked in the MEG file and are output as three separate .txt files to the subject’s MEG directory
--	Pulls columns from behavior data file and calculates mean RTs and accuracy by trial and subject and appends that to master behavior data sheet
+##	Behavior processing
+1.	**MID_beh.py** 
+- make_markerfiles_MID(subjectlist): Makes marker files for more MEG processing; these markers will designate win/loss/neutral cues to be marked in the MEG file and are output as three separate .txt files to the subject’s MEG directory
+-	clean_beh_MID(subjectlist): Pulls columns from behavior data file and calculates mean RTs and accuracy by trial and subject and appends that to master behavior data sheet
+- Note: for all of these, "subjectlist" is defaulted to "processinglist.txt"
 2.	Input: cue markers text file (this is from a previous MEG processing step not included here), behavior text file
-3.	Output: win/loss/neutral text files (3), master csv that includes mean reaction times and accuracy by participant and trial
-
-##	Create dataset copies with fresh, new, hip parameters
-1.	**make_newDs_swarm.py**:
--	Makes a swarm file that will create new datasets from existing MEG datasets (helpful if you want to look in a new time window or use different markers and make a fresh batch of datasets to work with)
--	As of now, you need to edit the variables at the beginning of the script to make paramter changes
-2.	Input: and original MEG file (something.ds) and processinglist.txt (a file with a list of participant ID numbers you want to include--one day this will be fancier, but this is what we're working with this week)
-3.	Output: a .swarm file in your swarm directory; also after running this, you will see the swarm command you need to run as output in your terminal window
+3.	Output: win/loss/neutral text files (3), two cleaned behavior csvs for each participant (deposited in their respective behavior folders), and master csv that includes mean reaction times and accuracy by participant and trial
 
 ##	Pre-SAM parameter file creation
 1.	**make_paramfiles.py**:
--	Makes parameter files for use with SAM commands (see step below) and drops each unique and glorious param file into each subject's meg directory
--	Again, there are variables at the beginning of script that make changing the parameters (as needed for your analysis) relatively easy, though in the future, this will hopefully be upgraded to something more interactive in the command line so no one has to edit the script.
-2.	Input: nothing! This script really knows what its doing! (well technically it needs to find subject folders in your subjects directory, but this is still pretty exciting)
+-	make_param(sublist, freq, NumMarkers, Marker1, marker1window): Makes parameter files for use with SAM commands (see step below) and drops each param file into each subject's meg directory
+2.	Input: function input parameters (though it has default highgamma respwin parameters); it also needs to find subject folders in your "subjects" directory
 3.	Output: a param file in each subject's meg directory
 
-##	MEG processing with SAM
-1.	**make_sam_swarm.py**:
--	Makes three swarm files for all subjects in processinglist.txt; each swarm file has a a command for source localization in high gamma using SAM (from samsrcv3)
--	There are a few variables clearly labelled at the top of the script that can be changed to reflect the frequency band, marker, and dataset you want to use.
-2.	Input: MRI with fiducial markers set, MEG file, parameter file (highgamma.param)
-3.	Output: three .swarm files in your swarm directory; also after running this, you will see the swarm commands as output in your terminal window, and you just need to copy them one at a time into the command line!
-4.	Final output after running all three swarms: *Mean.nii file for use in analysis
+##	Create swarm files for MEG data processing
+1.	**make_swarms.py**:
+-	make_swarm_newDs(subjectlist,origds,newds,marker,timewindow): Makes a swarm file that will create new datasets from existing MEG datasets for all subjects in list (helpful if you want to look in a new time window or use different markers and make a fresh batch of datasets to work with)
+-	make_swarm_sam(subjectlist,ds,marker): Makes three swarm files for all subjects in list; each swarm file has a a command for source localization in high gamma using SAM (from samsrcv3)
+2. Note: for all of these functions, "subjectlist" is defaulted to "processinglist.txt", origds is defaulted to the original MID MEG data file, newds and ds are defaulted to the respwin version of the file, and other processing variables are defaulted to highgamma band in the response window of the task (only reason for this is that these are the paramters I am interested in at the moment, so it makes my life easier!)
+3.	Input: original MEG file (something.ds) and processinglist.txt (or some file with a list of participant ID numbers you want to include--one day this will be fancier, but this is what we're working with this week), MRI with fiducial markers set, parameter file (highgamma.param)
+4.	Output: .swarm files in your swarm directory; also after running this, you will see the swarm command(s) you need to run as output in your terminal window
 
 
 # Notes about this young and naive package
