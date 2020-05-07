@@ -6,9 +6,7 @@
 import os,sys
 
 #set directory, subject list, and some other things
-rootdir='/data/MoodGroup/07M0021_meg_analysis/MID_data/subjects/'
-root, dirs, files = os.walk(rootdir).__next__()
-default_sublist=list(dirs)
+default_rootdir='/data/MoodGroup/07M0021_meg_analysis/MID_data/subjects/'
 alpha=['alpha','8 14']
 beta=['beta','15 29']
 gamma=['gamma','30 60']
@@ -30,9 +28,11 @@ Model='Nolte'
 CovType='SUM'
 ImageFormat='TLRC 5'
 
-def make_param(sublist=default_sublist, freq=default_freq, NumMarkers=default_NumMarkers, Marker1=default_Marker1, marker1window=default_marker1window):
+def make_param(rootdir=default_rootdir, freq=default_freq, NumMarkers=default_NumMarkers, Marker1=default_Marker1, marker1window=default_marker1window):
 	"""Makes param files for each subject in their meg folder."""
-	#define some things
+	#define subject list and some other things for the file
+	root, dirs, files = os.walk(rootdir).__next__()
+	sublist=list(dirs)	
 	freqname,freqband=freq
 	OrientBand=freqband
 	NoiseBand=freqband
