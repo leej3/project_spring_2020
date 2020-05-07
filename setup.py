@@ -4,10 +4,6 @@ from pathlib import Path
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-
-SCRIPTS = [str(f) for f in Path('scripts').glob('*program.py')]
-long_description = "some text"
-
 setuptools.setup(
     name="get_volumes",
     version="0.0.1",
