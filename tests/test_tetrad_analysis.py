@@ -20,6 +20,10 @@ SAMPLE_XLSX = Path(__file__) / "data" / "python_test_list.xlsx"
     
 def test_read_excel_file():
     
+    '''
+    This is to test whether read_excel_file() actually reads the file and returns in the correct format
+    '''
+    
     expected_tail = SAMPLE_DF_TAIL.set_index("Plate")
     
     result = dataframe_functions.read_excel_file(SAMPLE_XLSX)
@@ -27,6 +31,9 @@ def test_read_excel_file():
     
 
 def test_sort_and_filter_by_col():
+  
+  '''This tests whether sort_and_filter_by_col() filters variables by col (antibiotics) and isolates the positive values
+  '''
     
     #For sorting input by col
     
@@ -44,6 +51,10 @@ def test_sort_and_filter_by_col():
 
 
 def test_combine_antibiotics():
+    
+    '''
+    this tests whether combine_antibiotics() combines the new databases into one library
+    '''
     
     expected_df = dataframe_functions.read_excel_file(SAMPLE_XLSX)
     
@@ -63,6 +74,10 @@ def test_combine_antibiotics():
 
 def test_write_marker_dict_to_disk():
     
+    '''
+    tests whether write_marker_dict_to_disk() creates a new excel document where each dataframe from the library occupies its own sheet.
+    '''
+    
     writer = pd.ExcelWriter(file_out, engine='xlsxwriter')
     for sheet_name in markers.keys():
         markers[sheet_name].to_excel(writer, sheet_name=sheet_name, index=False)
@@ -77,6 +92,10 @@ def test_write_marker_dict_to_disk():
     
 
 def test_antibiotic_analysis():
+    
+    '''
+    tests whether antibiotic_analysis() sorts and filters the data for each marker before uploading the document
+    '''
     
     expected_df = dataframe_functions.read_excel_file(SAMPLE_XLSX)
     
