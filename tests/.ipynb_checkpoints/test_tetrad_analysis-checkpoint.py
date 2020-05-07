@@ -4,8 +4,8 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 
- SAMPLE_XLSX = Path(__file__) / "data" / "python_test_list.xlsx"
-  SAMPLE_DF_TAIL = pd.DataFrame(
+SAMPLE_XLSX = Path(__file__) / "data" / "python_test_list.xlsx"
+SAMPLE_DF_TAIL = pd.DataFrame(
          data={
              "Plate": [1,1,1],
              "Tetrad":[12,12,12],
@@ -89,14 +89,5 @@ def test_antibiotic_analysis():
     assert result == expected_result, 'fail5'
     
 
-if __name__=='__main__':
-    
-    test_read_excel_file()
-    test_sort_and_filter_by_col()
-    test_combine_antibiotics()
-    test_write_marker_dict_to_disk()
-    test_antibiotic_analysis()
-    
-#for completion
 
-print("yay!")
+    
