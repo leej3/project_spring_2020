@@ -1,11 +1,11 @@
 import pytest
 from tetrad_analysis import dataframe_functions
- import pandas as pd
- import numpy as np
- from pathlib import Path
+import pandas as pd
+import numpy as np
+from pathlib import Path
 
  SAMPLE_XLSX = Path(__file__) / "data" / "python_test_list.xlsx"
- SAMPLE_DF_TAIL = pd.DataFrame(
+  SAMPLE_DF_TAIL = pd.DataFrame(
          data={
              "Plate": [1,1,1],
              "Tetrad":[12,12,12],
@@ -23,7 +23,7 @@ def test_read_excel_file():
     expected_tail = SAMPLE_DF_TAIL.set_index("Plate")
     
     result = dataframe_functions.read_excel_file(SAMPLE_XLSX)
-    assert result.tail(3) == expected_tail 
+    assert result.tail(3) == expected_tail, 'fail1'
     
 
 def test_sort_and_filter_by_col():
@@ -39,7 +39,7 @@ def test_sort_and_filter_by_col():
     expected_df_filtered = pd.DataFrame(expected_pos_vals)
     
     result = dataframe_functions.sort_and_filter_by_col(expected_df_in, col)
-    assert result == expected_df_filtered
+    assert result == expected_df_filtered, 'fail2'
                   
 
 
@@ -55,7 +55,7 @@ def test_combine_antibiotics():
     
     result = dataframe_functions.test_combine_antibiotics(expected_df_in,markers)
     
-    assert result == expected_all_positive
+    assert result == expected_all_positive, 'fail3'
     
     
     
@@ -70,7 +70,7 @@ def test_write_marker_dict_to_disk():
     
     result = write_marker_dict_to_disk(marker,file_out)
     
-    assert result == expected_result
+    assert result == expected_result, 'fail4'
 
     
     
@@ -86,5 +86,8 @@ def test_antibiotic_analysis():
     
     result = dataFrame_functions.test_antibiotic_analysis(file_in, file_out="Antibiotic_markers.xlsx",markers=['NAT','HYG','URA'])
     
-    assert result == expected_result
+    assert result == expected_result, 'fail5'
+    
+
+
     

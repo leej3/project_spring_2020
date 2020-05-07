@@ -1,0 +1,13 @@
+Metadata-Version: 1.1
+Name: tetrad-analysis
+Version: 0.0.1
+Summary: A package to help analyze tetrads
+Home-page: https://github.com/harveycas/project_spring_2020
+Author: Catherine_Harvey
+Author-email: harveycas@nih.gov
+License: UNKNOWN
+Description: A package to facilitate analyzing the antibiotic markers of yeast tetrads
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
