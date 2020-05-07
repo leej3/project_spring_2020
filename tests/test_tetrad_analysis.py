@@ -20,10 +20,6 @@ SAMPLE_DF_TAIL = pd.DataFrame(
     
 def test_read_excel_file():
     
-    '''
-    This is to test whether read_excel_file() actually reads the file and returns in the correct format
-    '''
-    
     expected_tail = SAMPLE_DF_TAIL.set_index("Plate")
     
     result = dataframe_functions.read_excel_file(SAMPLE_XLSX)
@@ -31,9 +27,6 @@ def test_read_excel_file():
     
 
 def test_sort_and_filter_by_col():
-  
-  '''This tests whether sort_and_filter_by_col() filters variables by col (antibiotics) and isolates the positive values
-  '''
     
     #For sorting input by col
     
@@ -46,15 +39,11 @@ def test_sort_and_filter_by_col():
     expected_df_filtered = pd.DataFrame(expected_pos_vals)
     
     result = dataframe_functions.sort_and_filter_by_col(expected_df_in, col)
-    assert result == expected_df_filtered, 'fail2'
+    assert result == expected_df_filtered
                   
 
 
 def test_combine_antibiotics():
-    
-    '''
-    this tests whether combine_antibiotics() combines the new databases into one library
-    '''
     
     expected_df = dataframe_functions.read_excel_file(SAMPLE_XLSX)
     
@@ -66,17 +55,13 @@ def test_combine_antibiotics():
     
     result = dataframe_functions.test_combine_antibiotics(expected_df_in,markers)
     
-    assert result == expected_all_positive, 'fail3'
+    assert result == expected_all_positive
     
     
     
     
 
 def test_write_marker_dict_to_disk():
-    
-    '''
-    tests whether write_marker_dict_to_disk() creates a new excel document where each dataframe from the library occupies its own sheet.
-    '''
     
     writer = pd.ExcelWriter(file_out, engine='xlsxwriter')
     for sheet_name in markers.keys():
@@ -85,17 +70,13 @@ def test_write_marker_dict_to_disk():
     
     result = write_marker_dict_to_disk(marker,file_out)
     
-    assert result == expected_result, 'fail4'
+    assert result == expected_result
 
     
     
     
 
 def test_antibiotic_analysis():
-    
-    '''
-    tests whether antibiotic_analysis() sorts and filters the data for each marker before uploading the document
-    '''
     
     expected_df = dataframe_functions.read_excel_file(SAMPLE_XLSX)
     
@@ -105,7 +86,7 @@ def test_antibiotic_analysis():
     
     result = dataFrame_functions.test_antibiotic_analysis(file_in, file_out="Antibiotic_markers.xlsx",markers=['NAT','HYG','URA'])
     
-    assert result == expected_result, 'fail5'
+    assert result == expected_result
     
 
 
