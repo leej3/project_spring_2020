@@ -9,5 +9,6 @@ jobs:
           - checkout
           - run:
               command: |
+                cd project_spring_2020/BIOF309_RDK
                 pip install .
                 pytest  --showlocals tests
