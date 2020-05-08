@@ -3,10 +3,12 @@ from tetrad_analysis import dataframe_functions
 import pandas as pd
 import numpy as np
 from pathlib import Path
+import os.path
 
-SAMPLE_XLSX = Path(__file__) / "data" / "python_test_list.xlsx"
+
+SAMPLE_XLSX = Path(__file__)/ "data"/"python_test_list.xlsx"
 SAMPLE_DF_TAIL = pd.DataFrame(
-         data={
+    data={
              "Plate": [1,1,1],
              "Tetrad":[12,12,12],
              "spore":["12B","12C","12D"],
@@ -23,7 +25,8 @@ def test_read_excel_file():
     expected_tail = SAMPLE_DF_TAIL.set_index("Plate")
     
     result = dataframe_functions.read_excel_file(SAMPLE_XLSX)
-    assert result.tail(3) == expected_tail, 'fail1'
+    
+    assert result.tail(3) == expected_tail
     
 
 def test_sort_and_filter_by_col():
@@ -38,8 +41,13 @@ def test_sort_and_filter_by_col():
     expected_pos_vals = expected_df_sorted[expected_df_sorted[col]>0]
     expected_df_filtered = pd.DataFrame(expected_pos_vals)
     
-    result = dataframe_functions.sort_and_filter_by_col(expected_df_in, col)
+    result = dataframe_functions.sort_and_filter_by_col(expected_df,col)
+    
     assert result == expected_df_filtered
+    
+    
+    
+    
                   
 
 
@@ -53,7 +61,7 @@ def test_combine_antibiotics():
         expected_all_positive[marker + '_plus'] = expected_marker
     return expected_all_positive
     
-    result = dataframe_functions.test_combine_antibiotics(expected_df_in,markers)
+    result = dataframe_functions.test_combine_antibiotics(expected_df,markers)
     
     assert result == expected_all_positive
     
@@ -84,7 +92,7 @@ def test_antibiotic_analysis():
     expected_output_dict = combine_antibiotics(expected_df_tetrad, markers)
     expected_result = writer_marker_dict_to_disk(expected_output_dict,file_out)
     
-    result = dataFrame_functions.test_antibiotic_analysis(file_in, file_out="Antibiotic_markers.xlsx",markers=['NAT','HYG','URA'])
+    result = dataFrame_functions.test_antibiotic_analysis(file_in,file_out="Antibiotic_markers.xlsx",markers=['NAT','HYG','URA'])
     
     assert result == expected_result
     

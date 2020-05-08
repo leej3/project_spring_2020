@@ -76,12 +76,13 @@ def write_marker_dict_to_disk(marker,file_out):
 
     
 def antibiotic_analysis(file_in,file_out="Antibiotic_markers.xlsx",markers=['NAT','HYG','URA']):
-     """
-     Reads file_in, and for each marker performs a sort and filter before 
-     writing the results to file_out. Each marker occupies its own sheet
-     """
+    """
+    Reads file_in, and for each marker performs a sort and filter before 
+    writing the results to file_out. Each marker occupies its own sheet
+    """
      
     df_tetrad = read_excel_file(file_in)
+     
     output_dict = combine_antibiotics(df_tetrad,markers)
     write_marker_dict_to_disk(output_dict,file_out)
 
