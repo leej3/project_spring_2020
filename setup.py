@@ -14,7 +14,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/dferhadian/-project_spring_2020/tree/master/get_volumes",
     packages=setuptools.find_packages(),
-    scripts = core_function.py,
+    scripts = ['get_volumes/core_function.py'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
