@@ -1,7 +1,7 @@
 # Final Project
 BIOF 309 Spring 2020 <br>
 **Author:** Ramita Karra <br>
-**Last edited:** 04-23-2020 <br>
+**Last edited:** 05-08-2020 <br>
 
 ## Project Description
 This aim of this project is to produce a script that will process raw tab-delimited output returned from the ExpansionHunter-Targeted software tool, used for making sequence-graph-based predictions of repeat lengths for known genetic repeat loci. The ultimate goal is to clean, compile, and process data for many different loci into a summary table, and to provide visualizations pertinent to the functional relevance of this data (i.e. number of samples containing repeat numbers above the pathogenic threshold for each gene).  
