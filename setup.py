@@ -4,11 +4,11 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="package_name", 
+    name="SNP Annotation Matrix Plot", 
     version="0.0.1",
-    author="put_your_name_here",
-    author_email="insert_email",
-    description="insert package description",
+    author="Aidan O'Brien",
+    author_email="aidanobrien93@hotmail.com",
+    description="Generate a binary matrix to identify putative functional SNPs co-localiseing to epigenetically enriched regions",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/aob93/project_spring_2020",
